@@ -1,0 +1,16 @@
+=== SESSION 9: ESP32-P4 eFUSE VERIFICATION — COMPLETE ===
+Date: Jun 4 2026, 22:30-23:20 CEST
+Hardware: ESP32-P4 rev v1.3, 32MB PSRAM, 16MB Flash
+USB: Direct Windows laptop COM9 @ 115200
+
+MILESTONES:
+✅ ESP-IDF v6.0.1 activation workflow (PowerShell export.ps1 every session)
+✅ main/CMakeLists.txt was pointing to aegis_boot.c (stub) instead of main.c (eFuse code)
+✅ Notepad edit workaround (vs PowerShell copy-paste disasters)
+✅ eFUSE read firmware compiles & executes cleanly
+✅ ECDSA blocks 4-9 all readable, all zeros (virgin eFuse, ready for key provisioning)
+
+FIRMWARE:
+- Blocks 4-9: all 0x00 (no key burned yet)
+- eFuse API: working
+- Next: key generation & burn (one-time irreversible)
