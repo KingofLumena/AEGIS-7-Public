@@ -104,7 +104,9 @@ Sensors
 
 ## License
 
-MIT License
+Proprietary — all rights reserved. See LICENSE.
+
+Commercial licensing available on request.
 
 ---
 
