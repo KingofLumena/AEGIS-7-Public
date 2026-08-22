@@ -14,6 +14,13 @@ import json
 from datetime import datetime
 import serial
 import threading
+import os
+
+# Override with:  export AEGIS7_AUDIT_LOG=/path/to/audit.jsonl
+AUDIT_LOG = os.environ.get(
+    'AEGIS7_AUDIT_LOG',
+    os.path.expanduser('~/aegis7/aegis7_audit.jsonl'),
+)
 
 class NTPValidator:
     def __init__(self, gps_port='/dev/ttyACM0', ntp_servers=None):
@@ -182,7 +189,7 @@ class NTPValidator:
         }
         
         try:
-            with open('/home/baphometxix/aegis7/aegis7_audit.jsonl', 'a') as f:
+            with open(AUDIT_LOG, 'a') as f:
                 f.write(json.dumps(entry) + '\n')
             print(f"[AEGIS-7] Logged validation entry #{entry['sequence']}")
         except Exception as e:
