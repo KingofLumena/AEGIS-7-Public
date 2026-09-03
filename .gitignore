@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SECRETS — NEVER COMMIT
 *.bin
 *.pem
@@ -19,7 +18,6 @@ __pycache__/
 
 # Large firmware binaries
 P4_firmware*.bin
-=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -238,4 +236,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
->>>>>>> 4a306d03b0400ff532ff2ed417d8fad5e07eca0d
+
+# Chei PUBLICE pentru verificare independenta (nu sunt secrete)
+!verification/aegis7_tpm_pub.pem
+!verification/aegis7_mldsa65_pub.bin
+
+# Chei private — blocare explicita
+*.key
+aegis7_mldsa65.key
