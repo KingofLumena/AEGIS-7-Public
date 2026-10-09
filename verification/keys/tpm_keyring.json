@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "note": "TPM signing keys by sequence range. pem paths are relative to ~/aegis7. seq_to null = open.",
+  "keys": [
+    {
+      "key_id": "v1-slb9670",
+      "pem": "keys/tpm2_pubkey_v1_slb9670.pem",
+      "pem_sha256": "384ea46bb9adbf58ec5d972b16583a3819e33f35bf6429771a12b00e0f9eefe4",
+      "alg": "RSA-2048 RSASSA-PKCS1-v1_5 SHA256",
+      "tpm": "Infineon SLB9670 (LetsTrust), handle 0x81000001",
+      "seq_from": 0,
+      "seq_to": 6092120,
+      "status": "retired: TPM destroyed 2026-10-02 (reversed GPS HAT), private key lost"
+    },
+    {
+      "key_id": "v2-slb9672",
+      "pem": "keys/tpm2_pubkey_v2_slb9672.pem",
+      "pem_sha256": "d8d6a184cfbf2952ccae688b61f7d70ad32001a9b83ec1ac843dc8f8ced2c454",
+      "alg": "RSA-2048 RSASSA-PKCS1-v1_5 SHA256",
+      "tpm": "Infineon SLB9672 FW 15.x (LetsTrust), handle 0x81000001, owner-hierarchy primary",
+      "seq_from": 6092121,
+      "seq_to": null,
+      "created": "2026-10-07",
+      "status": "active",
+      "first_signed_seq": 6237825
+    }
+  ],
+  "unsigned_windows": [
+    {
+      "seq_from": 6092121,
+      "seq_to": 6237824,
+      "reason": "TPM destroyed 2026-10-02 during hardware migration; entries hash-chained and HMAC'd, no TPM signature. Covered by the first anchor signed with the next key."
+    }
+  ]
+}
