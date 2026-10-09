@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-07",
+  "new_key": {
+    "first_signed_entry_hash": "732fc21f2c05f16445397fa70961d399e2e496d5f1241b816b03ea265b2c338a",
+    "first_signed_seq": 6237825,
+    "key_id": "v2-slb9672",
+    "pubkey_pem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjMxFEOA6dOyBZJeJ5Ywe\n6zduMoKsND0ReNZO2f3H3vW/W8LpyKwwZB8pr9rTkmyi7Dn+6s+VZ6To+vwHD6xW\n9BSdluCA7vW55xus/Ng7cSNjGbx9VVg2nAin0pwZMk/1eVVRo9AoY72W4JcYJ3Zu\nPm1fY+DIIicyxsWT18FeD9CnZiKdtsOWb7C4bmk/Wu4bXtGKSrdQ37zUgD4zXhYz\nKeoXir4994/md5NL/qLvw4GVHRyQSLo6CSqHeOaTRxtCfOCq6m8Zht4SwLNQQEcS\nhoT1o2nG53J99IRvSPywBZ34MvtvrY/DOFpXOb8fpLIUqm1S8FDt4i3nDUYX5/hU\niQIDAQAB\n-----END PUBLIC KEY-----\n",
+    "pubkey_sha256": "d8d6a184cfbf2952ccae688b61f7d70ad32001a9b83ec1ac843dc8f8ced2c454",
+    "tpm": "Infineon SLB9672 FW 15.x (LetsTrust), handle 0x81000001, owner-hierarchy primary"
+  },
+  "old_key": {
+    "key_id": "v1-slb9670",
+    "last_signed_entry_hash": "d28fc1728d835fd90a4c1fa983186a0e545d4dec3d84d0d115fb037c958f1662",
+    "last_signed_seq": 6092120,
+    "pubkey_sha256": "384ea46bb9adbf58ec5d972b16583a3819e33f35bf6429771a12b00e0f9eefe4",
+    "status": "TPM destroyed 2026-10-02 during hardware migration (GPS HAT fitted reversed on the GPIO header with the TPM mounted on it). Private key lost. This statement cannot be signed by the old key.",
+    "tpm": "Infineon SLB9670 (LetsTrust), handle 0x81000001"
+  },
+  "signature": "RSASSA-PKCS1-v1_5 SHA256 by v2 over the exact bytes of this file; see ROTATION_20261007.json.sig",
+  "system": "AEGIS-7 (Lumena)",
+  "type": "aegis7_tpm_key_rotation",
+  "unsigned_window": {
+    "entries": 145704,
+    "first_entry_hash": "02307f20866e14c861f6d469efd97dcd838b02410af52729e3f0bdf3ec84b951",
+    "integrity": "Hash-chained and HMAC'd, no TPM signature. Cryptographic attestation for this range starts with the first anchor signed by v2, not at write time.",
+    "last_entry_hash": "335fd0b53f1ca71863fc1d750d87e953574464db43b2956ca75175ec83f4de20",
+    "seq_from": 6092121,
+    "seq_to": 6237824
+  },
+  "version": 1
+}
