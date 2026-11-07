@@ -4,7 +4,7 @@
 
 AEGIS-7 is a Byzantine-resilient audit layer for autonomous and remote systems. It produces cryptographic evidence of system state that survives disconnection, resists tampering, and can be independently verified against an externally published anchor.
 
-Running on production hardware since July 2026. **3.5M+ signed entries, chain integrity continuous.**
+Running on production hardware since July 2026. **8M+ signed entries, chain integrity continuous.**
 
 ---
 
@@ -65,16 +65,18 @@ A system that claims to prove things should be able to prove things about itself
 
 | Capability | State | Evidence |
 |---|---|---|
-| Audit chain | Live | 3.5M+ entries, continuous since July 2026 |
+| Audit chain | Live | 8M+ entries, continuous since July 2026 |
 | Byzantine quorum | Live | 3/3 nodes, degradation tested by injection |
 | TPM signing | Live | RSA-2048, Infineon SLB9, PCR verified |
 | Post-quantum signing | Live | ML-DSA-65, verification confirmed |
+| TPM key rotation | Documented | Old TPM destroyed 2026-10-02; new key since 2026-10-07, ML-DSA key unchanged — see `verification/VERIFY.md` |
 | GNSS anti-spoofing | Live | Dual fix, cross-check 2.5–8 m typical |
 | External anchoring | Live | RFC 3161, 90-minute cadence |
 | Self-test | Automated | Results written to chain |
 | Restore test | Automated | Daily, against checksummed export |
 | Endurance | Verified | 50-day unattended run, 2.8M entries added |
 | Incident recovery | Documented | Tamper simulation and chain fork, both recovered |
+| External witness (ESP32-P4) | Experimental | Independent board verified real published anchors on-device: RSA-2048 ~15 ms, ML-DSA-65 ~9 ms per anchor |
 
 ---
 
@@ -97,6 +99,8 @@ Stated plainly, because you will find out anyway.
 **Single-operator maintenance.** One installation, one maintainer. Operational incidents — a node dropping out, a peripheral re-enumerating, a service needing restart — are handled manually. Availability engineering for unattended fleet operation has not been done.
 
 **Untested at fleet scale.** Three nodes, one site. Behaviour across hundreds of platforms is unknown.
+
+**Anchor v1 signs only the Merkle root.** The sequence number and the link to the previous anchor are published next to the root but are not covered by the signatures, and no consistency proofs between anchors are published yet. An external witness can therefore check authenticity, but not freshness or append-only growth on its own. Anchor v2, which signs a fixed binary payload including sequence, leaf count, root and previous-anchor hash, is designed and not yet deployed.
 
 ---
 
@@ -155,6 +159,11 @@ Sensors
 External
   RFC 3161 timestamping (third-party TSA)
   Public anchor publication
+
+ESP32-P4 — External Witness (experimental, offline)
+  Separate board, not connected to the auditor or the network
+  Pinned public keys (TPM v2 + ML-DSA-65)
+  Verifies published anchors independently and reports OK/FAIL
 ```
 
 **Flow:** Event → audit entry → SHA-256 link → Byzantine vote (2-of-3) → checkpoint sealed with GNSS time and position → periodic Merkle root → dual signature → external publication + RFC 3161 timestamp
@@ -181,6 +190,8 @@ That is the value proposition in one command.
 
 ## Roadmap
 
+- Anchor v2: signed sequence, leaf count and previous-anchor link; consistency proofs between anchors
+- Networked external witness on the ESP32-P4, after Anchor v2
 - Geographically distributed quorum (LoRa / WAN)
 - Hardware-backed post-quantum key storage, when TPM support exists
 - Unattended-availability engineering ahead of fleet deployment
@@ -208,9 +219,9 @@ If you operate autonomous or remote-sensing systems and data provenance is somet
 Twenty minutes, technical, no pitch deck.
 
 **Roman Ioan Petru** — Augsburg, Germany
-baphometabufihamat@gmail.com
+contact@lumena.systems
 
-Live demonstration available: verification against a chain with 3.5M+ entries, running now.
+Live demonstration available: verification against a chain with 8M+ entries, running now.
 
 ---
 
